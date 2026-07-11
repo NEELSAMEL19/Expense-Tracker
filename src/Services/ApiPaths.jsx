@@ -1,5 +1,4 @@
-export const BASEURL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3030";
+export const BASEURL = "https://expense-tracker-backend-e4gf.onrender.com"
 
 export const API_PATHS = {
   AUTH: {
