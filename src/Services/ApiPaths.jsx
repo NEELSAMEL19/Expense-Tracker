@@ -1,25 +1,26 @@
-export const BASEURL = "http://localhost:3030"
+export const BASEURL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3030";
 
 export const API_PATHS = {
-    AUTH: {
-        REGISTER: "/api/auth/register",
-        LOGIN: "/api/auth/login",
-        GET_PROFILE: "/api/auth/profile",
-        LOGOUT: "/api/auth/logout",
-    },
-    Income: {
-        Add_Income: "/api/income/add",
-        GET_Income: "/api/income",
-        DELETE_Income: (id) => `/api/income/${id}`,
-        Download_Income: "/api/income/download",
-    },
-    Expense: {
-        Add_Expense: "/api/expense/add",
-        GET_Expense: "/api/expense",
-        DELETE_Expense: (id) => `/api/expense/${id}`,
-        Download_Expense: "/api/expense/download",
-    },
-    Dashboard: {
-        GET_ALL: "/api/dashboard"
-    },
+  AUTH: {
+    REGISTER: "/api/auth/register",
+    LOGIN: "/api/auth/login",
+    GET_PROFILE: "/api/auth/profile",
+    LOGOUT: "/api/auth/logout",
+  },
+  Income: {
+    Add_Income: "/api/income/add",
+    GET_Income: "/api/income",
+    DELETE_Income: (id) => `/api/income/${id}`,
+    Download_Income: "/api/income/download",
+  },
+  Expense: {
+    Add_Expense: "/api/expense/add",
+    GET_Expense: "/api/expense",
+    DELETE_Expense: (id) => `/api/expense/${id}`,
+    Download_Expense: "/api/expense/download",
+  },
+  Dashboard: {
+    GET_ALL: "/api/dashboard",
+  },
 };
