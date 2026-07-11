@@ -1,4 +1,4 @@
-# 💰 Expense Tracker (MERN Stack)
+# 💰 Expense Tracker
 
 <p align="center">
   A full-stack <b>Expense Tracker</b> built with <b>MongoDB, Express.js, React, and Node.js</b>.<br>
