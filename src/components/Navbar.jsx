@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
 import { useAuth } from "../context/AuthContext";
+import { toggleSidebar } from "../features/ui/sidebarSlice";
 
-export default function Navbar({ onToggle }) {
+export default function Navbar() {
   const { user } = useAuth();
+  const dispatch = useDispatch();
 
   if (!user) return null;
 
@@ -10,7 +13,7 @@ export default function Navbar({ onToggle }) {
       {/* Left side: Toggle + Title */}
       <div className="flex items-center gap-3 sm:gap-4">
         <button
-          onClick={onToggle}
+          onClick={() => dispatch(toggleSidebar())}
           className="p-2 rounded-md hover:bg-sky-100 active:bg-sky-200 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-300"
           aria-label="Toggle menu"
         >

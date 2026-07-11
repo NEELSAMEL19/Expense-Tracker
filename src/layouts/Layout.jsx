@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
 import { useAuth } from "../context/AuthContext";
+import { closeSidebar } from "../features/ui/sidebarSlice";
 
 export default function Layout({ children }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const { user } = useAuth();
+  const dispatch = useDispatch();
+  const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
 
   if (!user) {
     return <>{children}</>;
@@ -14,18 +16,15 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar onToggle={() => setIsSidebarOpen((prev) => !prev)} />
+      <Navbar />
 
       <div className="flex flex-1 pt-14">
-        <SideBar
-          isOpen={isSidebarOpen}
-          onClose={() => setIsSidebarOpen(false)}
-        />
+        <SideBar />
 
         {/* Backdrop for mobile when sidebar is open */}
         {isSidebarOpen && (
           <div
-            onClick={() => setIsSidebarOpen(false)}
+            onClick={() => dispatch(closeSidebar())}
             className="fixed inset-0 top-14 bg-black/40 z-30 sm:hidden"
           />
         )}
