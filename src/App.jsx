@@ -7,13 +7,12 @@ import Dashboard from "./Pages/Dashboards/Dashboards";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Income from "./Pages/Income/Income";
 import Expense from "./Pages/Expense/Expense";
-
-import GlobalProvider from "./context/GlobalProvider";
+import { AuthProvider } from "./context/AuthContext";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <GlobalProvider>
+      <AuthProvider>
         <Routes>
           {/* Redirect root to login */}
           <Route path="/" element={<Navigate to="/auth/login" />} />
@@ -32,7 +31,7 @@ export default function App() {
           {/* 404 Not Found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </GlobalProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

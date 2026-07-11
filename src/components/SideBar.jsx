@@ -1,17 +1,18 @@
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { FilePlus, BarChart2, LogOut } from "lucide-react";
 
-export default function SideBar({ isOpen, onClose }) {
+export default function SideBar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
 
   if (!user) return null;
 
   const avatarSrc = user?.avatar || "/default-avatar.png";
 
   const handleLogout = async () => {
-    onClose?.();
     await logout();
     navigate("/auth/login");
   };
@@ -40,27 +41,24 @@ export default function SideBar({ isOpen, onClose }) {
       </div>
 
       {/* Menu Items */}
-      <ul className="p-3 space-y-1 text-sm">
+      <ul className="p-3 space-y-2 text-sm">
         <SidebarItem
           to="/auth/dashboard"
           icon={<BarChart2 size={20} />}
           label="Dashboard"
           isOpen={isOpen}
-          onClick={onClose}
         />
         <SidebarItem
           to="/auth/income"
           icon={<FilePlus size={20} />}
           label="Income"
           isOpen={isOpen}
-          onClick={onClose}
         />
         <SidebarItem
           to="/auth/expense"
           icon={<FilePlus size={20} />}
           label="Expense"
           isOpen={isOpen}
-          onClick={onClose}
         />
 
         {/* Logout is an action, not a route link */}
@@ -83,12 +81,11 @@ export default function SideBar({ isOpen, onClose }) {
   );
 }
 
-function SidebarItem({ to, icon, label, isOpen, onClick }) {
+function SidebarItem({ to, icon, label, isOpen }) {
   return (
     <li>
       <NavLink
         to={to}
-        onClick={onClick}
         title={!isOpen ? label : undefined}
         className={({ isActive }) =>
           `flex items-center gap-3 px-3 py-2 rounded-md transition-colors
