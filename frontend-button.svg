@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="20" viewBox="0 0 320 80">
+  <defs>
+    <clipPath id="pill"><rect width="320" height="80" rx="40"/></clipPath>
+  </defs>
+  <g clip-path="url(#pill)">
+    <rect width="110" height="80" fill="#7ED321"/>
+    <rect x="110" width="210" height="80" fill="#C4B5FD"/>
+  </g>
+  <g font-family="Verdana, Arial, sans-serif" font-weight="bold" font-size="26" text-anchor="middle" fill="#1F2937">
+    <text x="55" y="50">LIVE</text>
+    <text x="215" y="50">Frontend ↗</text>
+  </g>
+</svg>
