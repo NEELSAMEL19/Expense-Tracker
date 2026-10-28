@@ -7,7 +7,7 @@ export default function AddExpense({ isOpen, onClose }) {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    icon: "",
+    icon: "💸",
     category: "",
     amount: "",
     date: "",
@@ -30,7 +30,7 @@ export default function AddExpense({ isOpen, onClose }) {
     try {
       await dispatch(addExpense(formData)).unwrap();
       onClose();
-      setFormData({ icon: "", category: "", amount: "", date: "" });
+      setFormData({ icon: "💸", category: "", amount: "", date: "" });
     } catch (err) {
       console.error("Failed to add expense:", err);
     }

@@ -7,7 +7,7 @@ export default function AddIncome({ isOpen, onClose }) {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    icon: "",
+    icon: "💰",
     source: "",
     amount: "",
     date: "",
@@ -30,7 +30,7 @@ export default function AddIncome({ isOpen, onClose }) {
     try {
       await dispatch(addIncome(formData)).unwrap();
       onClose();
-      setFormData({ icon: "", source: "", amount: "", date: "" });
+      setFormData({ icon: "💰", source: "", amount: "", date: "" });
     } catch (err) {
       console.error("Failed to add income:", err);
     }
